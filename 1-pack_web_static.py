@@ -1,15 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/python3
 """How to generate a tgz file with the contents of a web static folder using fabric api
 """
-
-
 from fabric.api import *
 """
 	what is fabric? It is an api or library that allows user to 
 	execute commands remotely Or locally via linux shell
 """
-from datetime import datetime
 import time
+
 
 def do_pack():
     """
