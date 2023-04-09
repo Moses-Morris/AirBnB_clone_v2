@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-	How to generate a tgz file with the contents of a web static folder using fabric api
+"""How to generate a tgz file with the contents of a web static folder using fabric api
 """
 
 
