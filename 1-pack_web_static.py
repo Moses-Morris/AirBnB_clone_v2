@@ -2,12 +2,7 @@
 """How to generate a tgz file with the contents of a web static folder using fabric api
 """
 from fabric.api import *
-"""
-	what is fabric? It is an api or library that allows user to 
-	execute commands remotely Or locally via linux shell
-"""
 import time
-
 
 def do_pack():
     """
@@ -21,4 +16,4 @@ def do_pack():
         local("tar -cvzf {} web_static/".format(file_path))
         return file_path
     except:
-        return
+        return None
