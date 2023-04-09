@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""How to generate a tgz file with the contents of a web static folder using fabric api
-"""
-from fabric.api import *
+"""Generates a .tgz archive from the contents of the web_static folder."""
+from fabric.api import local
 import time
+
 
 def do_pack():
     """
