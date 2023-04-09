@@ -10,28 +10,16 @@ from fabric.api import *
 	execute commands remotely Or locally via linux shell
 """
 from datetime import datetime
-
-
 def do_pack():
     """
-    this is an archive of the contents in web static folder
+    Generate a .tgz archive from web_static folder.
     """
-    currentTime = datetime.now()
-    Archive = "versions/web_static_{}{}{}{}{}{}.tgz".format(currentTime.year,
-                                                                currentTime.month,
-                                                                currentTime.day,
-                                                                currentTime.hour,
-                                                                currentTime.minute,
-                                                                currentTime.second)
-    print("Packing web_static to {}".format(Archive))
-
-    """
-	Creation of the directory called versions and then checking out : mkdir -p
-    """
-
-    local("mkdir -p versions")
-    newArchivedFile = local("tar -cvzf {} web_static".format(Archive))
-    if newArchivedFile.succeeded:
-        return (Archive)
-    else:
-        return None
+    try:
+        local("mkdir -p versions")
+        file_name = "web_static_{}.tgz".format(
+            time.strftime("%Y%m%d%H%M%S"))
+        file_path = "versions/{}".format(file_name)
+        local("tar -cvzf {} web_static/".format(file_path))
+        return file_path
+    except:
+        return
