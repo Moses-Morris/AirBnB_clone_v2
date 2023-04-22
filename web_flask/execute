@@ -1,0 +1,5 @@
+#!/bin/bash
+# A script  that git adds, git commits and git pushes.
+git add .
+git commit -m "$1"
+git push
