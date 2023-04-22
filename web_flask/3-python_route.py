@@ -1,35 +1,35 @@
 #!/usr/bin/python3
-# Script that starts a Flask web application:
-
+""" Starts a Flask web application """
 from flask import Flask
-
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.route('/')
-def hello_route():
-    """ return Hello HBNB! """
-    return 'Hello HBNB!'
+@app.route('/', strict_slashes=False)
+def hello_hbn():
+    """ Returns Hello HBNB! from 0.0.0.0:5000 """
+    return "Hello HBNB!"
 
 
-@app.route('/hbnb')
-def hbnb_route():
-    """ return HBNB """
-    return 'HBNB'
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """ Returns HBNB from 0.0.0.0:5000/hbnb """
+    return "HBNB"
 
 
-@app.route('/c/<text>')
+@app.route('/c/<text>', strict_slashes=False)
 def c_route(text):
-    """ return c followed by the value of the text variable """
-    return "C {}".format(text.replace("_", " "))
+    """ Returns C followed by the value of text """
+    text = text.replace('_', ' ')
+    return "C {}".format(text)
 
 
-@app.route('/python/')
-@app.route('/python/<text>')
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def python_route(text="is cool"):
-    """ Return Python , followed by the value of the text variable """
-    return "Python {}".format(text.replace("_", " "))
+    """ Returns Python followed by the vale of the text """
+    text = text.replace('_', ' ')
+    return "Python {}".format(text)
+
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(host='0.0.0.0')
